@@ -1,1 +1,1 @@
-__all__ = ["connection", "sql_queries", "main_menu", "function_debug"]
+__all__ = ["connection", "sql_queries", "main_menu"]

@@ -1,6 +1,6 @@
 # from . import connection
 # from . import main_menu
-import connection
+from TestingPackage import connection
 
 print("="*48 + "\nsql_queries.py running\n" + "="*48)
 
