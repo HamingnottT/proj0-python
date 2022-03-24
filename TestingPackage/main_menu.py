@@ -3,6 +3,7 @@
 import re
 # from turtle import title
 from TestingPackage import sql_queries
+from TestingPackage import sub_menus
 # from . import function_debug
 
 print("="*48 + "\nmain_menu.py running\n" + "="*48)
@@ -39,6 +40,8 @@ def sign_in():
         main_menu()
     else:
         print(f"{str(name)} and {str(password)} are the outputs of the tuple")
+
+    
     
 def main_menu():
 
@@ -54,7 +57,7 @@ def main_menu():
 
     while option != 0:
         if option == 1:
-            print("Websites")
+            sub_menus.websites()
             
         elif option == 2:
             print("Usernames & Passwords")
@@ -65,6 +68,7 @@ def main_menu():
         else:
             print("\nInvalid response, please try again.\n")
 
+        print("\n")
         main_options()
         option = int(input("Input here: "))
     
