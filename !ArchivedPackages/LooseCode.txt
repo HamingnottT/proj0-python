@@ -68,3 +68,9 @@ from old connection.py
 
 --------------------------------------------------------------------
 ====================================================================
+from main_menu.py
+--------------------------------------------------------------------
+
+# sql_queries.debug_select_all()
+sql_queries.get_all_websites()
+# function_debug.string_interpolation()
