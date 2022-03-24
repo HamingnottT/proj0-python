@@ -12,7 +12,9 @@ TESTusername = "HamingnottT"
 def sign_in_query(input_user_name, input_password):
     cursor.execute(f"SELECT cl_user, cl_pass FROM project0.sql_admin WHERE cl_user = '{input_user_name}' AND cl_pass = '{input_password}'")
     for x in cursor:
-        print(x)
+        name = x[0]
+        password = x[1]
+    return(name, password)
 
 def debug_select_all():
     cursor.execute("SELECT * FROM project0.sql_admin")
