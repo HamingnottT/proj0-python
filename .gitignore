@@ -132,4 +132,4 @@ dmypy.json
 .vscode
 
 # Project notes
-!ArchivedPackages/
+/!ArchivedPackages
