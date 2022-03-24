@@ -1,1 +1,1 @@
-# This module contains the source code of the CLI interface
+# This module contains the source code of the main CLI interface

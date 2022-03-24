@@ -1,7 +1,6 @@
 # This module establishes the MySQL connection to the database
 
 import mysql.connector
-  # import re # /?\ imports regex
 
 print("="*48 + "\nsql_conn_test.py running\n" + "="*48)
 

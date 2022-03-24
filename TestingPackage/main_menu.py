@@ -1,7 +1,7 @@
 # from . import sql_queries
-from optparse import Option
+# from optparse import Option
 import re
-from turtle import title
+# from turtle import title
 from TestingPackage import sql_queries
 # from . import function_debug
 
@@ -24,7 +24,6 @@ def sign_in():
     input_user_name = "HamingnottT"
     input_password = "NotMyPassword"
     
-
     try:
         (name, password) = sql_queries.sign_in_query(input_user_name, input_password)
     except UnboundLocalError:
@@ -41,7 +40,6 @@ def sign_in():
     else:
         print(f"{str(name)} and {str(password)} are the outputs of the tuple")
     
-
 def main_menu():
 
     def main_options():
@@ -71,8 +69,6 @@ def main_menu():
         option = int(input("Input here: "))
     
     print("\nEnding program. . .\n")
-
-        
 
 
 if __name__ == '__main__':
