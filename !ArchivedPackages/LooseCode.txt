@@ -1,0 +1,70 @@
+====================================================================
+from previous main_test.py
+--------------------------------------------------------------------
+
+import mysql.connector
+
+# /!\ NEEDS ATTENTION: Issues importing .py modules from TestingPackage
+# parser throws error describing that it cannot find module /!\
+
+from TestingPackage import sql_conn_test    # imports sql_conn_test.py from folder TestingPackage
+
+print("="*48 + "\nmain_test.py running\n" + "="*48)
+
+cursor = sql_conn_test.conn.cursor()
+
+# must iterate over execute statements
+cursor.execute("SELECT * FROM project0.sql_admin")
+# for x in cursor:
+#   print(x)
+
+remaining_rows = cursor.fetchall()
+
+print(remaining_rows[0])
+
+cursor.execute("DESCRIBE sql_admin")
+for x in cursor:
+  print(x)
+
+# cursor.execute("SELECT * FROM project0.sql_admin")
+
+--------------------------------------------------------------------
+====================================================================
+====================================================================
+from old connection.py
+--------------------------------------------------------------------
+
+# /?\ Test code for cleaner query formatting
+# goal is to output query into tabular form /?\
+# cursor.execute("SELECT * FROM project0.sql_admin")
+# # conn.commit()
+# results = cursor.fetchall()
+
+# widths = []
+# columns = []
+# tavnit = '|'
+# separator = '+' 
+
+# for cd in cursor.description:
+#     widths.append(max(cd[2], len(cd[0])))
+#     columns.append(cd[0])
+
+# for w in widths:
+#     tavnit += " %-"+"%ss |" % (w,)
+#     separator += '-'*w + '--+'
+
+# print(separator)
+# print(tavnit % tuple(columns))
+# print(separator)
+# for row in results:
+#     print(tavnit % row)
+# print(separator)
+
+# cursor.execute("SELECT * FROM project0.sql_admin")
+# for x in cursor:
+#     print(x)
+
+# print(mysql_conn)
+
+--------------------------------------------------------------------
+====================================================================

@@ -1,0 +1,61 @@
+1. Db Connection
+
+mysql_conn = ""
+
+mysql_conn = mysql.connector.connect(
+  host="localhost",
+  # url = "jdbc:project0://localhost:3306/mysql", # /!\ from Scala - jdbc may not work when called /!\
+  user="root",
+  password="RiffRaff68#$",
+  database="project0"
+)
+
+2. Cursor creation
+
+# creates a cursor to iterate thru table
+mycursor = mysql_conn.cursor()
+
+# DEBUG: shows the table to validate whether db loaded or not
+print("\n")
+mycursor.execute("DESCRIBE sql_admin")
+for x in mycursor:
+  print(x)
+
+3. Query Examples
+
+mycursor.execute()
+
+# creates table
+mycursor.execute("CREATE TABLE Person (name VARCHAR(50), age smallint UNSIGNED, personID int PRIMARY KEY AUTO-INCREMENT)")
+
+# Insert data into table
+mycursor.execute("INSERT INTO Person (name, age) VALUES (%s,%s)", ("Tim", 19))
+
+db.commit()   # Commits the above code into database - run only once
+
+# alters the table to add new data
+mycursor.execute("ALTER TABLE Test ADD COLUMN food VARCHAR(50) NOT NULL")
+
+# Select method example
+mycursor.execute("SELECT * FROM project0.sql_admin")
+
+# must call this for-loop to print query to console
+# This iterates over execute rows
+for x in mycursor:
+  print(x)
+
+# alternative way of manipulating data using .fetchall()
+mycursor.execute("SELECT * FROM project0.sql_admin")
+
+# fetchall returns a list of tuples (these tuples are the rows and their subsequent values)
+remaining_rows = cursor.fetchall()
+
+# invoking remaining_rows at index 0 returns the first row and so on
+print(remaining_rows[0])
+  output: (1, 'HamingnottT', 'NotMyPassword')
+
+4. Import Examples
+
+import mysql.connector
+
+from datetime import datetime

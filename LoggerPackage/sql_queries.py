@@ -1,0 +1,1 @@
+# This module contains the source code of the MySQL queries defined in this project
