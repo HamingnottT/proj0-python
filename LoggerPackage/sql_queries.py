@@ -76,14 +76,13 @@ def get_Certain_Website():
     access_logs.close()
 
 # U
-# /!\ this function has multiple queries and I need to find a way to handle both separately and on-demand
 def update_website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
-    # var updateWebUsername - 
+
     inputWebsite4User = str(input("\nWhat website are you looking for? "))
     print("\nReturning the website requested:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4User}'")
@@ -98,7 +97,6 @@ def update_website():
     for x in cursor:
         print(x)
 
-    # var postUpdate
     print("\nReturning updated website name:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{updateSite}'")
     for x in cursor:
@@ -112,26 +110,18 @@ def del_website():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
-    try:
 
+    try:
         userInput4Del = input("\nWhat website do you no longer use? ")
 
         get_website = f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{userInput4Del}'"
-
         cursor.execute(get_website)
 
         print("\nReturned all data from the website you have selected. . .\n")
 
         buffered_cursor = conn.cursor(buffered=True)
         delete_query = f"DELETE FROM sql_user WHERE cl_user = '{name}' AND website = '{userInput4Del}'"
-
-        # Experimental query to handle SQL Injections
-        # delete_query = "DELETE FROM sql_user WHERE cl_user = %s AND website = %s"
-        # adr = (f"{name}", f"{userInput4Del}")
-        # print(delete_query, adr)
-
         buffered_cursor.execute(delete_query)
-
         conn.commit()
 
         print(f"\nThe website, {userInput4Del}, has been erased.")
@@ -153,6 +143,7 @@ def get_all_user():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
+
     input4User = str(input("What username are you looking for? "))
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND username = '{input4User}'")
     for x in cursor:
@@ -167,15 +158,16 @@ def update_user():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
+
     inputWebsite4User = str(input("What Website are you looking for? "))
-    #  var inputWebsite4User - What website are you looking for?
+
     print("\nData found for the website selected:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4User}'")
     for x in cursor:
         print(x)
     
     webUpdateUser = str(input("\nWhat username are you using now? "))
-    # var webUpdateUser - What username are you using now?
+
     print("\nReturning all websites that use this username:")
     cursor.execute(f"UPDATE sql_user SET username = '{webUpdateUser}' WHERE website = '{inputWebsite4User}'")
     conn.commit()
@@ -195,15 +187,16 @@ def update_pass():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
+
     inputWebsite4Pass = str(input("What Website are you looking for? "))
     print("\nData found for the website selected:")
-    # var InputWebsite4Pass - What website are you looking for?
+
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4Pass}'")
     for x in cursor:
         print(x)
 
     webUpdatePassword = str(input("\nWhat password are you using now? "))
-    # var webUpdatePassword - What password are you using now?
+
     print("\nReturning all websites that use this password:")
     cursor.execute(f"UPDATE sql_user SET password = '{webUpdatePassword}' WHERE website = '{inputWebsite4Pass}'")
     conn.commit()
@@ -223,8 +216,9 @@ def get_email():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
+
     inputWebsite4email = str(input("What email address are you looking for? "))
-    # var inputWebsite4email - What email address are you looking for?
+
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND email = '{inputWebsite4email}'")
     for x in cursor:
         print(x)
@@ -237,15 +231,16 @@ def update_email():
     access_log_list = (access_logs.read()).split(",")
     name = access_log_list[0]
     password = access_log_list[1]
+
     inputWebsite4email = str(input("What email address are you looking for? "))
-    # var inputWebsite4email - What email address are you looking for?
+
     print("\nData found for the email selected:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4email}'")
     for x in cursor:
         print(x)
     
     webUpdateEmail = str(input("\nWhat email are you using now? "))
-    # var webUpdateEmail = readLine("\nWhat password are you using now? ")
+
     print("\nReturning all websites that use this email:")
     cursor.execute(f"UPDATE sql_user SET email = '{webUpdateEmail}' WHERE website = '{inputWebsite4email}'")
     conn.commit()
