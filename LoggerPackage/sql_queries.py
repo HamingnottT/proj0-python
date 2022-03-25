@@ -85,6 +85,7 @@ def update_website():
     password = access_log_list[1]
     # var updateWebUsername - 
     inputWebsite4User = str(input("\nWhat website are you looking for? "))
+    print("\nReturning the website requested:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4User}'")
     for x in cursor:
         print(x)
@@ -98,6 +99,7 @@ def update_website():
         print(x)
 
     # var postUpdate
+    print("\nReturning updated website name:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{updateSite}'")
     for x in cursor:
         print(x)
@@ -167,12 +169,14 @@ def update_user():
     password = access_log_list[1]
     inputWebsite4User = str(input("What Website are you looking for? "))
     #  var inputWebsite4User - What website are you looking for?
+    print("\nData found for the website selected:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4User}'")
     for x in cursor:
         print(x)
     
     webUpdateUser = str(input("\nWhat username are you using now? "))
     # var webUpdateUser - What username are you using now?
+    print("\nReturning all websites that use this username:")
     cursor.execute(f"UPDATE sql_user SET username = '{webUpdateUser}' WHERE website = '{inputWebsite4User}'")
     conn.commit()
     for x in cursor:
@@ -192,6 +196,7 @@ def update_pass():
     name = access_log_list[0]
     password = access_log_list[1]
     inputWebsite4Pass = str(input("What Website are you looking for? "))
+    print("\nData found for the website selected:")
     # var InputWebsite4Pass - What website are you looking for?
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4Pass}'")
     for x in cursor:
@@ -199,6 +204,7 @@ def update_pass():
 
     webUpdatePassword = str(input("\nWhat password are you using now? "))
     # var webUpdatePassword - What password are you using now?
+    print("\nReturning all websites that use this password:")
     cursor.execute(f"UPDATE sql_user SET password = '{webUpdatePassword}' WHERE website = '{inputWebsite4Pass}'")
     conn.commit()
     for x in cursor:
@@ -233,12 +239,14 @@ def update_email():
     password = access_log_list[1]
     inputWebsite4email = str(input("What email address are you looking for? "))
     # var inputWebsite4email - What email address are you looking for?
+    print("\nData found for the email selected:")
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{inputWebsite4email}'")
     for x in cursor:
         print(x)
     
-    webUpdateEmail = str(input("\nWhat password are you using now? "))
+    webUpdateEmail = str(input("\nWhat email are you using now? "))
     # var webUpdateEmail = readLine("\nWhat password are you using now? ")
+    print("\nReturning all websites that use this email:")
     cursor.execute(f"UPDATE sql_user SET email = '{webUpdateEmail}' WHERE website = '{inputWebsite4email}'")
     conn.commit()
     for x in cursor:

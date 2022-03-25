@@ -72,7 +72,7 @@ def main_menu():
     except PermissionError:
         print(" /!\ ")
         print("PermissionError detected while trying to close access logs.")
-        print("Unable to delete temporary cache.")
+        print("Unable to delete temporary cache file.")
         print("Attempting to purge file by overwriting...")
         
         access_logs = open(r"!Logs/AccessLogs.txt","w+")
