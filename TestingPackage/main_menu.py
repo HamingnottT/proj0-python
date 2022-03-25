@@ -60,14 +60,11 @@ def main_menu():
 
     while option != 0:
         if option == 1:
-            sub_menus.websites()
-            
+            sub_menus.websites()  
         elif option == 2:
-            print("Usernames & Passwords")
-            
+            sub_menus.user()   
         elif option == 3:
-            print("Email")
-            
+            sub_menus.email()  
         else:
             print("\nInvalid response, please try again.\n")
 
@@ -76,9 +73,7 @@ def main_menu():
         option = int(input("Input here: "))
     
     print("\nEnding program. . .\n")
-
     os.remove("!Logs/AccessLogs.txt")
-
 
 if __name__ == '__main__':
     print("Calling main_menu.py")

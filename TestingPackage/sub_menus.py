@@ -4,7 +4,6 @@ from TestingPackage import sql_queries
 print("="*48 + "\nsub_menu.py running\n" + "="*48)
 
 def websites():
-    
     # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -28,22 +27,17 @@ def websites():
 
     while option != 0:
         if option == 1:
-            pass
-            
+            pass 
         elif option == 2:
-            pass
-            
+            pass    
         elif option == 3:
             print("\n")
             sql_queries.get_all_websites()
             print(f"\nReturned all websites from database under user {name}. Returning to menu. . .")
-        
         elif option == 4:
-            pass
-        
+            pass  
         elif option == 5:
-            pass
-            
+            pass    
         else:
             print("\nInvalid response, please try again.\n")
 
@@ -56,6 +50,93 @@ def websites():
     # end of function returns to main screen
     print("-"*48 + "\nWelcome back to the main screen:\n" + "-"*48)
 
+def user():
+    # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function
+    access_logs = open(r"!Logs/AccessLogs.txt","r")
+    access_logs.seek(0)
+    access_log_list = (access_logs.read()).split(",")
+
+    name = access_log_list[0]
+    password = access_log_list[1]
+
+    print("\n" + "-"*48 + "\n")
+    def sub_options():
+        print("Usernames & Passwords option selected. Please input one of the numbers into the field below:\n\n"
+                "1 = Update Username of a Website \n"
+                "2 = Find Websites by Username \n"
+                "3 = Update a Password \n"
+                "4 = Go to Websites  \n"
+                "0 = Exit To Main Menu \n")
+    
+    sub_options()
+    option = int(input("Input here: "))
+
+    while option != 0:
+        if option == 1:
+            pass 
+        elif option == 2:
+            sql_queries.get_all_user()   
+        elif option == 3:
+            pass
+        elif option == 4:
+            pass  
+        elif option == 5:
+            pass    
+        else:
+            print("\nInvalid response, please try again.\n")
+
+        print("\n")
+        sub_options()
+        option = int(input("Input here: "))
+
+    access_logs.close()
+
+    # end of function returns to main screen
+    print("-"*48 + "\nWelcome back to the main screen:\n" + "-"*48)
+
+def email():
+    # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function
+    access_logs = open(r"!Logs/AccessLogs.txt","r")
+    access_logs.seek(0)
+    access_log_list = (access_logs.read()).split(",")
+
+    name = access_log_list[0]
+    password = access_log_list[1]
+
+    print("\n" + "-"*48 + "\n")
+    def sub_options():
+        print("Email option selected. Please input one of the numbers into the field below:\n\n"
+                "1 = Get websites With Target Email \n"
+                "2 = Update Email of a Website \n"
+                "3 = Go to Usernames & Passwords \n"
+                "4 = Go to Websites  \n"
+                "0 = Exit To Main Menu \n")
+    
+    sub_options()
+    option = int(input("Input here: "))
+
+    while option != 0:
+        if option == 1:
+            pass 
+        elif option == 2:
+            pass   
+        elif option == 3:
+            pass
+        elif option == 4:
+            pass  
+        elif option == 5:
+            pass    
+        else:
+            print("\nInvalid response, please try again.\n")
+
+        print("\n")
+        sub_options()
+        option = int(input("Input here: "))
+
+    access_logs.close()
+
+    # end of function returns to main screen
+    print("-"*48 + "\nWelcome back to the main screen:\n" + "-"*48)
 
 
 if __name__ == '__main__':
