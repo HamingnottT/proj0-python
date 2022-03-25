@@ -23,8 +23,3 @@ finally:
 
 # creates a cursor to iterate thru table
 cursor = conn.cursor()
-
-# Query test here:
-print("\n")
-
-print("="*48 + "\nsql_conn_test.py ended\n" + "="*48)
