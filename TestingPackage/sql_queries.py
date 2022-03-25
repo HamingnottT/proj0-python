@@ -21,6 +21,7 @@ def debug_select_all():
     for x in cursor:
         print(x)
 
+
 def get_all_websites():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -30,6 +31,7 @@ def get_all_websites():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # R
 def get_Certain_Website():
@@ -42,7 +44,7 @@ def get_Certain_Website():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{userInput4Website}'")
     for x in cursor:
         print(x)
-
+    access_logs.close()
 
 # U
 # /!\ this function has multiple queries and I need to find a way to handle both separately and on-demand
@@ -69,16 +71,23 @@ def update_website():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{updateSite}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # D
 def del_website():
+    # access_logs = open(r"!Logs/AccessLogs.txt","r")
+    # access_logs.seek(0)
+    # access_log_list = (access_logs.read()).split(",")
+    # name = access_log_list[0]
+    # password = access_log_list[1]
     # try:
+        
     
     # except:
     
     # finally:
-    #     pass
-
+    
+    # access_logs.close()
     pass
 
 # R
@@ -92,6 +101,7 @@ def get_all_user():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND username = '{input4User}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # U
 # /!\ this function has multiple queries and I need to find a way to handle both separately and on-demand
@@ -117,6 +127,7 @@ def update_user():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND username = '{webUpdateUser}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # U
 def update_pass():
@@ -141,6 +152,7 @@ def update_pass():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND password = '{webUpdatePassword}'")
     for x in cursor:
         print(x)
+    access_logs.close()
     
 # R
 def get_email():
@@ -154,6 +166,7 @@ def get_email():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND email = '{inputWebsite4email}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # U
 def update_email():
@@ -178,5 +191,6 @@ def update_email():
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND email = '{webUpdateEmail}'")
     for x in cursor:
         print(x)
+    access_logs.close()
 
 # print("="*48 + "\nsql_queries.py ended\n" + "="*48)
