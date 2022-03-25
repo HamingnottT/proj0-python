@@ -2,7 +2,7 @@
 
 import mysql.connector
 
-print("="*48 + "\nsql_conn_test.py running\n" + "="*48)
+print("="*48 + "\nconnection.py running\n" + "="*48)
 
 conn = ""
 
