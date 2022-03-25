@@ -1,4 +1,3 @@
-from unicodedata import name
 from TestingPackage import sql_queries
 
 print("="*48 + "\nsub_menu.py running\n" + "="*48)
@@ -29,7 +28,7 @@ def websites():
         if option == 1:
             pass 
         elif option == 2:
-            pass    
+            sql_queries.get_Certain_Website()
         elif option == 3:
             print("\n")
             sql_queries.get_all_websites()

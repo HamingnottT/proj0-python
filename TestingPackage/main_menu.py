@@ -1,6 +1,6 @@
 import re
 import os
-from TestingPackage import connection, sql_queries
+from TestingPackage import sql_queries
 from TestingPackage import sub_menus
 
 print("="*48 + "\nmain_menu.py running\n" + "="*48)
@@ -11,6 +11,7 @@ print("\nHello, This is my first programming project that will log your website 
 print("-"*48)
 
 def sign_in():
+    
     # sign_in = False
 
     # sign_in_attempts = 0
