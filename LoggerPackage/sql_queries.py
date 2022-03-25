@@ -22,6 +22,8 @@ def debug_select_all():
     for x in cursor:
         print(x)
 
+# -- 1. Websites Selection --
+# Create - Creates new row for current user
 def create_website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -51,6 +53,7 @@ def create_website():
         print(x)
     access_logs.close()
 
+# Read - returns all websites for current user
 def get_all_websites():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -62,7 +65,7 @@ def get_all_websites():
         print(x)
     access_logs.close()
 
-# R
+# Read - returns website specified by user
 def get_Certain_Website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -75,7 +78,7 @@ def get_Certain_Website():
         print(x)
     access_logs.close()
 
-# U
+# Update - updates website name from existing database row
 def update_website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -103,7 +106,7 @@ def update_website():
         print(x)
     access_logs.close()
 
-# D
+# Delete - deletes row from database, which is specified by website name
 def del_website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -136,7 +139,8 @@ def del_website():
     
     access_logs.close()
 
-# R
+# -- 2. Users Selection --
+# Read - get all rows and records under current user
 def get_all_user():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -150,8 +154,7 @@ def get_all_user():
         print(x)
     access_logs.close()
 
-# U
-# /!\ this function has multiple queries and I need to find a way to handle both separately and on-demand
+# Update - update website user name from user-specified website
 def update_user():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -180,7 +183,7 @@ def update_user():
         print(x)
     access_logs.close()
 
-# U
+# Update - update password user name from user-specified website
 def update_pass():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -208,8 +211,9 @@ def update_pass():
     for x in cursor:
         print(x)
     access_logs.close()
-    
-# R
+
+# -- 3. Emails Selection --
+# Read - returns all websites that share a common email address
 def get_email():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
@@ -224,7 +228,7 @@ def get_email():
         print(x)
     access_logs.close()
 
-# U
+# Update - updates email on a user-specified website
 def update_email():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
