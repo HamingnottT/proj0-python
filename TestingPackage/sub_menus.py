@@ -26,7 +26,7 @@ def websites():
 
     while option != 0:
         if option == 1:
-            pass 
+            pass
         elif option == 2:
             sql_queries.get_Certain_Website()
         elif option == 3:
@@ -34,9 +34,9 @@ def websites():
             sql_queries.get_all_websites()
             print(f"\nReturned all websites from database under user {name}. Returning to menu. . .")
         elif option == 4:
-            pass  
+            sql_queries.update_website()
         elif option == 5:
-            pass    
+            pass  
         else:
             print("\nInvalid response, please try again.\n")
 
@@ -72,15 +72,13 @@ def user():
 
     while option != 0:
         if option == 1:
-            pass 
+            sql_queries.update_user()
         elif option == 2:
             sql_queries.get_all_user()   
         elif option == 3:
-            pass
+            sql_queries.update_pass()
         elif option == 4:
-            pass  
-        elif option == 5:
-            pass    
+            websites()
         else:
             print("\nInvalid response, please try again.\n")
 
@@ -116,15 +114,13 @@ def email():
 
     while option != 0:
         if option == 1:
-            pass 
+            sql_queries.get_email()
         elif option == 2:
-            pass   
+            sql_queries.update_email()  
         elif option == 3:
-            pass
+            user()
         elif option == 4:
-            pass  
-        elif option == 5:
-            pass    
+            websites()
         else:
             print("\nInvalid response, please try again.\n")
 
