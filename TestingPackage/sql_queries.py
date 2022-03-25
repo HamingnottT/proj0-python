@@ -6,6 +6,7 @@ print("="*48 + "\nsql_queries.py running\n" + "="*48)
 
 # "public" variable cursor
 cursor = connection.cursor
+conn = connection.conn
 
 # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function
 
@@ -64,6 +65,7 @@ def update_website():
 
     # updates website name based on variable updateSite - most likely this variable will be moved to another file
     cursor.execute(f"UPDATE sql_user SET website = '{updateSite}' WHERE website = '{inputWebsite4User}'")
+    conn.commit()
     for x in cursor:
         print(x)
 
@@ -120,6 +122,7 @@ def update_user():
     webUpdateUser = str(input("\nWhat username are you using now? "))
     # var webUpdateUser - What username are you using now?
     cursor.execute(f"UPDATE sql_user SET username = '{webUpdateUser}' WHERE website = '{inputWebsite4User}'")
+    conn.commit()
     for x in cursor:
         print(x)
     
@@ -145,6 +148,7 @@ def update_pass():
     webUpdatePassword = str(input("\nWhat password are you using now? "))
     # var webUpdatePassword - What password are you using now?
     cursor.execute(f"UPDATE sql_user SET password = '{webUpdatePassword}' WHERE website = '{inputWebsite4Pass}'")
+    conn.commit()
     for x in cursor:
         print(x)
     
@@ -184,6 +188,7 @@ def update_email():
     webUpdateEmail = str(input("\nWhat password are you using now? "))
     # var webUpdateEmail = readLine("\nWhat password are you using now? ")
     cursor.execute(f"UPDATE sql_user SET email = '{webUpdateEmail}' WHERE website = '{inputWebsite4email}'")
+    conn.commit()
     for x in cursor:
         print(x)
 

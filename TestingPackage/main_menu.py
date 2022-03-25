@@ -74,7 +74,13 @@ def main_menu():
         option = int(input("Input here: "))
     
     print("\nEnding program. . .\n")
-    os.remove("!Logs/AccessLogs.txt")
+
+    try:
+        os.remove("!Logs/AccessLogs.txt")
+    except PermissionError:
+        print("PermissionError detected.")
+    finally:
+        os.remove("!Logs/AccessLogs.txt")
 
 if __name__ == '__main__':
     print("Calling main_menu.py")
