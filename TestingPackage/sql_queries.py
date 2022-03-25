@@ -22,6 +22,34 @@ def debug_select_all():
     for x in cursor:
         print(x)
 
+def create_website():
+    access_logs = open(r"!Logs/AccessLogs.txt","r")
+    access_logs.seek(0)
+    access_log_list = (access_logs.read()).split(",")
+    name = access_log_list[0]
+    password = access_log_list[1]
+
+    print(("-"*48) +
+        f"\n\nWelcome {name} to the website creation tool.\n"
+        "Here you will be asked to input the following values in this order:\n"
+        "[Website] - [Username], [Password], [Email Address]\n\n"
+        "If certain fields are not required for login simply type 'N/A'.\n\n"
+        "Any information entered can be updated and deleted for future use.\n\n"
+        + ("-"*48))
+
+    new_Website = str(input("\nInput new website name: "))
+    new_Username = str(input("\nInput the username (if any) for this website: "))
+    new_Password = str(input("\nInput the password for this website: "))
+    new_Email = str(input("\nInput the email for this website: "))
+    print("\n")
+    insert_query = f"INSERT INTO sql_user(`website`, `username`, `password`, `email`, `cl_user`) VALUES('{new_Website}', '{new_Username}', '{new_Password}', '{new_Email}', '{name}')"
+    cursor.execute(insert_query)
+    conn.commit()
+    get_changes = f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{new_Website}'"
+    cursor.execute(get_changes)
+    for x in cursor:
+        print(x)
+    access_logs.close()
 
 def get_all_websites():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
@@ -77,20 +105,44 @@ def update_website():
 
 # D
 def del_website():
-    # access_logs = open(r"!Logs/AccessLogs.txt","r")
-    # access_logs.seek(0)
-    # access_log_list = (access_logs.read()).split(",")
-    # name = access_log_list[0]
-    # password = access_log_list[1]
-    # try:
-        
+    access_logs = open(r"!Logs/AccessLogs.txt","r")
+    access_logs.seek(0)
+    access_log_list = (access_logs.read()).split(",")
+    name = access_log_list[0]
+    password = access_log_list[1]
+    try:
+
+        userInput4Del = input("\nWhat website do you no longer use? ")
+
+        get_website = f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{userInput4Del}'"
+
+        cursor.execute(get_website)
+
+        print("\nReturned all data from the website you have selected. . .\n")
+
+        buffered_cursor = conn.cursor(buffered=True)
+        delete_query = f"DELETE FROM sql_user WHERE cl_user = '{name}' AND website = '{userInput4Del}'"
+
+        # Experimental query to handle SQL Injections
+        # delete_query = "DELETE FROM sql_user WHERE cl_user = %s AND website = %s"
+        # adr = (f"{name}", f"{userInput4Del}")
+        # print(delete_query, adr)
+
+        buffered_cursor.execute(delete_query)
+
+        conn.commit()
+
+        print(f"\nThe website, {userInput4Del}, has been erased.")
     
-    # except:
+    except connection.mysql.connector.errors.InternalError:
+        print("/!\ mysql.connector.errors.InternalError: Unread result found")
+        print("\n/!\ Unable to perform action.")
+        access_logs.close()
+
+    finally:
+        pass
     
-    # finally:
-    
-    # access_logs.close()
-    pass
+    access_logs.close()
 
 # R
 def get_all_user():

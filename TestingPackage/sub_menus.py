@@ -26,7 +26,7 @@ def websites():
 
     while option != 0:
         if option == 1:
-            pass
+            sql_queries.create_website()
         elif option == 2:
             sql_queries.get_Certain_Website()
         elif option == 3:
@@ -36,7 +36,7 @@ def websites():
         elif option == 4:
             sql_queries.update_website()
         elif option == 5:
-            pass  
+            sql_queries.del_website() 
         else:
             print("\nInvalid response, please try again.\n")
 
