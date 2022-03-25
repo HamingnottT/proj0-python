@@ -133,3 +133,6 @@ dmypy.json
 
 # Project notes
 /!ArchivedPackages
+
+# Log folder
+/!Logs

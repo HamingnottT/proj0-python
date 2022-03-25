@@ -4,7 +4,14 @@ from TestingPackage import sql_queries
 print("="*48 + "\nsub_menu.py running\n" + "="*48)
 
 def websites():
-    name = "HamingnottT"
+    
+    # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function
+    access_logs = open(r"!Logs/AccessLogs.txt","r")
+    access_logs.seek(0)
+    access_log_list = (access_logs.read()).split(",")
+
+    name = access_log_list[0]
+    password = access_log_list[1]
 
     print("\n" + "-"*48 + "\n")
     def sub_options():
@@ -29,7 +36,7 @@ def websites():
         elif option == 3:
             print("\n")
             sql_queries.get_all_websites()
-            print(f"\nReturned all websites from database under {name}. Returning to menu. . .")
+            print(f"\nReturned all websites from database under user {name}. Returning to menu. . .")
         
         elif option == 4:
             pass
@@ -43,6 +50,8 @@ def websites():
         print("\n")
         sub_options()
         option = int(input("Input here: "))
+
+    access_logs.close()
 
     # end of function returns to main screen
     print("-"*48 + "\nWelcome back to the main screen:\n" + "-"*48)

@@ -1,10 +1,7 @@
-# from . import sql_queries
-# from optparse import Option
 import re
-# from turtle import title
-from TestingPackage import sql_queries
+import os
+from TestingPackage import connection, sql_queries
 from TestingPackage import sub_menus
-# from . import function_debug
 
 print("="*48 + "\nmain_menu.py running\n" + "="*48)
 
@@ -35,8 +32,14 @@ def sign_in():
     
     if input_user_name == str(name) and input_password == str(password):
         print("-"*48)
-        print(f"\nWelcome in {name}!\n") # validation only - pending function call
-        # return sign_in == True
+        print(f"\nWelcome in {name}!\n")
+
+        # creates a temporary log to store username and password to resuse in other functions and modules
+        access_log_formatter = f"{name},{password}"
+        access_logs = open(r"!Logs/AccessLogs.txt","w+")
+        access_logs.writelines(access_log_formatter)
+        access_logs.close()
+
         main_menu()
     else:
         print(f"{str(name)} and {str(password)} are the outputs of the tuple")
@@ -73,6 +76,8 @@ def main_menu():
         option = int(input("Input here: "))
     
     print("\nEnding program. . .\n")
+
+    os.remove("!Logs/AccessLogs.txt")
 
 
 if __name__ == '__main__':
