@@ -25,7 +25,6 @@ def get_all_websites():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     cursor.execute(f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}'")
@@ -37,7 +36,6 @@ def get_Certain_Website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     userInput4Website = str(input("\nWhat website are you looking for? "))
@@ -52,7 +50,6 @@ def update_website():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     # var updateWebUsername - 
@@ -89,7 +86,6 @@ def get_all_user():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     input4User = str(input("What username are you looking for? "))
@@ -103,7 +99,6 @@ def update_user():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     inputWebsite4User = str(input("What Website are you looking for? "))
@@ -128,7 +123,6 @@ def update_pass():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     inputWebsite4Pass = str(input("What Website are you looking for? "))
@@ -153,7 +147,6 @@ def get_email():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     inputWebsite4email = str(input("What email address are you looking for? "))
@@ -167,7 +160,6 @@ def update_email():
     access_logs = open(r"!Logs/AccessLogs.txt","r")
     access_logs.seek(0)
     access_log_list = (access_logs.read()).split(",")
-    access_logs()
     name = access_log_list[0]
     password = access_log_list[1]
     inputWebsite4email = str(input("What email address are you looking for? "))
