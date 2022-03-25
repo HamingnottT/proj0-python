@@ -89,5 +89,5 @@ def main_menu():
     print("\nClosing application. . .")
 
 if __name__ == '__main__':
-    print("Calling main_menu.py")
+    print("!Calling main_menu.py")
     sign_in()
