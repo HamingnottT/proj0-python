@@ -2,7 +2,7 @@
 
 from LoggerPackage import sql_queries
 
-print("="*48 + "\nsub_menu.py running\n" + "="*48)
+# print("="*48 + "\nsub_menu.py running\n" + "="*48)
 
 def websites():
     # opens the access log created in main_menu.sign_in(), and recreates a list(not tuple) for use in this function

@@ -3,7 +3,7 @@
 from sqlite3 import IntegrityError
 from LoggerPackage import connection
 
-print("="*48 + "\nsql_queries.py running\n" + "="*48)
+# print("="*48 + "\nsql_queries.py running\n" + "="*48)
 
 # "public" variable cursor
 cursor = connection.cursor

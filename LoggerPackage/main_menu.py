@@ -4,7 +4,7 @@ import os
 from LoggerPackage import sql_queries
 from LoggerPackage import sub_menus
 
-print("="*48 + "\nmain_menu.py running\n" + "="*48)
+# print("="*48 + "\nmain_menu.py running\n" + "="*48)
 
 print("-"*48)
 print("\nHello, This is my first programming project that will log your website sign-in data for easy recall."
