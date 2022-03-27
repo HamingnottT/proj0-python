@@ -1,0 +1,2 @@
+The file in this folder gives the code necessary to generate the database and tables to work with.
+If you are using Workbench or the command line, run this .sql file and everything should create and autopopulate itself
