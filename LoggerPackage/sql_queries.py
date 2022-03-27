@@ -1,5 +1,6 @@
 # This module contains the source code of the MySQL queries defined in this project
 
+from sqlite3 import IntegrityError
 from LoggerPackage import connection
 
 print("="*48 + "\nsql_queries.py running\n" + "="*48)
@@ -39,19 +40,27 @@ def create_website():
         "Any information entered can be updated and deleted for future use.\n\n"
         + ("-"*48))
 
-    new_Website = str(input("\nInput new website name: "))
-    new_Username = str(input("\nInput the username (if any) for this website: "))
-    new_Password = str(input("\nInput the password for this website: "))
-    new_Email = str(input("\nInput the email for this website: "))
-    print("\n")
-    insert_query = f"INSERT INTO sql_user(`website`, `username`, `password`, `email`, `cl_user`) VALUES('{new_Website}', '{new_Username}', '{new_Password}', '{new_Email}', '{name}')"
-    cursor.execute(insert_query)
-    conn.commit()
-    get_changes = f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{new_Website}'"
-    cursor.execute(get_changes)
-    for x in cursor:
-        print(x)
-    access_logs.close()
+    # /!\ Pending fix -- IntegrityError for duplicates found traced back to Python\Python310\lib\site-packages\mysql\connector\cursor_cext.py
+    # and Python\Python310\lib\site-packages\mysql\connector\connection_cext.py /!\
+    try:
+        new_Website = str(input("\nInput new website name: "))
+        new_Username = str(input("\nInput the username (if any) for this website: "))
+        new_Password = str(input("\nInput the password for this website: "))
+        new_Email = str(input("\nInput the email for this website: "))
+        print("\n")
+        insert_query = f"INSERT INTO sql_user(`website`, `username`, `password`, `email`, `cl_user`) VALUES('{new_Website}', '{new_Username}', '{new_Password}', '{new_Email}', '{name}')"
+        cursor.execute(insert_query)
+        conn.commit()
+        get_changes = f"SELECT website, username, password, email FROM project0.sql_user WHERE cl_user = '{name}' AND website = '{new_Website}'"
+        cursor.execute(get_changes)
+        for x in cursor:
+            print(x)
+        access_logs.close()
+    except IntegrityError:
+        print(f"Uh oh, IntegrityError found. Looks like there may be an entry of the same website: {new_Website}.")
+        return
+    finally:
+        access_logs.close()     # ensures that log file is closed
 
 # Read - returns all websites for current user
 def get_all_websites():
