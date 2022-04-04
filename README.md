@@ -26,6 +26,7 @@ Repo can be cloned easily using the Github CLI, Desktop app, or by using VS Code
 Requires an installation of MySQL 8.0 to connect to MySQL database. The scope of this project is limited to local, so no server connection is necessary. 
     Under the MySQL Resources folder, follow along with the DB Creation code to get started. 
     On startup, the application will ask for you to input your MySQL credentials to establish a connection with your local system.
+    Included requirements.txt and a batch file for easy pip installation for windows users.
 
 # Usage
 Using the project will require creating/changing the default database used as it depends on MySQL 8.0 for storing username/passwords.  More features will be added later on for better versatility.  
